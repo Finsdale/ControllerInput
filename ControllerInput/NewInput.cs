@@ -9,8 +9,10 @@ namespace ControllerInput
 {
   internal class NewInput
   {
-    GamePadState Cont1, Cont2, Cont3, Cont4;
+    List<Controller> Controllers = new List<Controller>();
     KeyboardState KbState;
     MouseState MState;
+
+
   }
 }

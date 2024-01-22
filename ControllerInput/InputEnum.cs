@@ -6,16 +6,31 @@ using System.Threading.Tasks;
 
 namespace ControllerInput
 {
-    public enum Direction
-    {
-        Up,
-        UpLeft,
-        UpRight,
-        Down,
-        DownLeft,
-        DownRight,
-        Left,
-        Right,
-        None
-    }
+  public enum Direction
+  {
+    Up,
+    UpLeft,
+    UpRight,
+    Down,
+    DownLeft,
+    DownRight,
+    Left,
+    Right,
+    None
+  }
+
+  public enum ThumbStick
+  {
+    Left,
+    Right
+  }
+
+  public enum MouseButtons
+  {
+    Left,
+    Middle,
+    Right,
+    XButton1,
+    XButton2
+  }
 }
