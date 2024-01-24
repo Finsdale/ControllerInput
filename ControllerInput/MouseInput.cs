@@ -6,37 +6,80 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.XPath;
 
 namespace ControllerInput
 {
   internal class MouseInput
   {
-    MouseState OMS { get; set; }
     MouseState MS { get; set; }
-    
+    MouseState OMS { get; set; }
+
     public void UpdateState()
     {
       OMS = MS;
       MS = Mouse.GetState();
     }
 
-    public bool IsButtonPressed(MouseButtons button)
+    public bool IsButtonPressed(MouseButton button)
     {
-      Type theType = MS.GetType();
-      MethodInfo theMethod = theType.GetMethod(button.ToString());
-      bool result = (bool)theMethod.Invoke(this, null);
-      return OMS.IsButtonUp(button) && MS.IsButtonDown(button);
+      return IsButtonUp(button, OMS) && IsButtonDown(button, MS);
     }
 
-    public bool IsButtonReleased(Buttons button)
+    public bool IsButtonReleased(MouseButton button)
     {
-      return OCS.IsButtonDown(button) && CS.IsButtonUp(button);
+      return IsButtonDown(button, OMS) && IsButtonUp(button, MS);
     }
 
-    public bool IsButtonHeld(Buttons button)
+    public bool IsButtonHeld(MouseButton button)
     {
-      return OCS.IsButtonDown(button) && CS.IsButtonDown(button);
+      return IsButtonDown(button, OMS) && IsButtonDown(button, MS);
     }
 
+    static bool IsButtonUp(MouseButton button, MouseState state)
+    {
+      bool result = false;
+      switch (button) {
+        case MouseButton.Left:
+          result = state.LeftButton == ButtonState.Released;
+          break;
+        case MouseButton.Middle:
+          result = state.MiddleButton == ButtonState.Released;
+          break;
+        case MouseButton.Right:
+          result = state.RightButton == ButtonState.Released;
+          break;
+        case MouseButton.XButton1:
+          result = state.XButton1 == ButtonState.Released;
+          break;
+        case MouseButton.XButton2:
+          result = state.XButton2 == ButtonState.Released;
+          break;
+      }
+      return result;
+    }
+
+    static bool IsButtonDown(MouseButton button, MouseState state)
+    {
+      bool result = false;
+      switch (button) {
+        case MouseButton.Left:
+          result = state.LeftButton == ButtonState.Pressed;
+          break;
+        case MouseButton.Middle:
+          result = state.MiddleButton == ButtonState.Pressed;
+          break;
+        case MouseButton.Right:
+          result = state.RightButton == ButtonState.Pressed;
+          break;
+        case MouseButton.XButton1:
+          result = state.XButton1 == ButtonState.Pressed;
+          break;
+        case MouseButton.XButton2:
+          result = state.XButton2 == ButtonState.Pressed;
+          break;
+      }
+      return result;
+    }
   }
 }

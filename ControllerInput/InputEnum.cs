@@ -25,7 +25,7 @@ namespace ControllerInput
     Right
   }
 
-  public enum MouseButtons
+  public enum MouseButton
   {
     Left,
     Middle,
