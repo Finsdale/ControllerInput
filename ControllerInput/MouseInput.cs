@@ -10,7 +10,7 @@ using System.Xml.XPath;
 
 namespace ControllerInput
 {
-  internal class MouseInput
+  public class MouseInput
   {
     MouseState MS { get; set; }
     MouseState OMS { get; set; }

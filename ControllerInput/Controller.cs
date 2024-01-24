@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ControllerInput
 {
-  internal class Controller
+  public class Controller
   {
     GamePadState OCS { get; set; }
     GamePadState CS { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ControllerInput
 {
-  internal class NewInput
+  public class NewInput
   {
     public List<Controller> Controllers;
     public KeyboardState KbState;
