@@ -15,7 +15,7 @@ namespace ControllerInput
     public MouseInput? MInput;
     bool KbActive, MActive;
 
-    NewInput(int numOfControllers, bool kbUsed = false, bool mouseUsed = false)
+    public NewInput(int numOfControllers, bool kbUsed = false, bool mouseUsed = false)
     {
       Controllers = new();
       for(int i = 1; i <= numOfControllers;  i++) {
@@ -42,6 +42,11 @@ namespace ControllerInput
       if(MActive) {
         MInput?.UpdateState();
       }
+    }
+
+    public void SetMouseScale(Vector2 backbuffer, Vector2 renderTarget)
+    {
+      MInput?.SetScale(backbuffer, renderTarget);
     }
   }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,17 @@ namespace ControllerInput
   {
     MouseState MS { get; set; }
     MouseState OMS { get; set; }
+    Vector2 Scale;
 
     public void UpdateState()
     {
       OMS = MS;
       MS = Mouse.GetState();
+    }
+
+    public Point MousePosition()
+    {
+      return new Vector2(MS.Position.X/Scale.X, MS.Position.Y / Scale.Y).ToPoint();
     }
 
     public bool IsButtonPressed(MouseButton button)
@@ -80,6 +87,11 @@ namespace ControllerInput
           break;
       }
       return result;
+    }
+
+    internal void SetScale(Vector2 backbuffer, Vector2 renderTarget)
+    {
+      Scale = backbuffer / renderTarget;
     }
   }
 }
