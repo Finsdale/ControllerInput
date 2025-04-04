@@ -11,7 +11,7 @@ namespace ControllerInput
   public class NewInput
   {
     public List<Controller> Controllers;
-    public KeyboardState KbState;
+    public KeyboardInput? KBInput;
     public MouseInput? MInput;
     bool KbActive, MActive;
 
@@ -23,7 +23,7 @@ namespace ControllerInput
       }
       if(kbUsed) {
         KbActive = true;
-        KbState = new();
+        KBInput = new();
       }
       if(mouseUsed) {
         MActive = true;
@@ -37,7 +37,7 @@ namespace ControllerInput
         controller.UpdateState();
       }
       if(KbActive) {
-        KbState = Keyboard.GetState();
+        KBInput?.UpdateState();
       }
       if(MActive) {
         MInput?.UpdateState();
