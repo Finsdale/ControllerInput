@@ -31,5 +31,10 @@ namespace ControllerInput
     {
       return KBS.IsKeyDown(key) && OKBS.IsKeyDown(key);
     }
+
+    public bool IsButtonDown(Keys key)
+    {
+      return KBS.IsKeyDown(key);
+    }
   }
 }
