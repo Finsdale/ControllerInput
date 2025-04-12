@@ -39,6 +39,11 @@ namespace ControllerInput
       return OCS.IsButtonDown(button) && CS.IsButtonDown(button);
     }
 
+    public bool IsButtonDown(Buttons button)
+    {
+      return CS.IsButtonDown(button);
+    }
+
     public Direction GetDirection(ThumbStick side)
     {
       Vector2 thumbStick = new();

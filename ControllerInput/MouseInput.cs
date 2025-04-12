@@ -43,6 +43,11 @@ namespace ControllerInput
       return IsButtonDown(button, OMS) && IsButtonDown(button, MS);
     }
 
+    public bool IsButtonDown(MouseButton button)
+    {
+      return IsButtonDown(button, MS);
+    }
+
     static bool IsButtonUp(MouseButton button, MouseState state)
     {
       bool result = false;
