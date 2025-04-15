@@ -19,7 +19,7 @@ namespace ControllerInput
     {
       Controllers = new();
       for(int i = 1; i <= numOfControllers;  i++) {
-        Controllers.Add(new Controller((PlayerIndex)i));
+        Controllers.Add(new Controller((PlayerIndex)i - 1));
       }
       if(kbUsed) {
         KbActive = true;
